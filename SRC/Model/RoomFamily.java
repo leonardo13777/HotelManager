@@ -1,5 +1,5 @@
 package HotelManager.SRC.Model;
 
-public class RoomFamily {
+public class RoomFamily extends Room{
     
 }

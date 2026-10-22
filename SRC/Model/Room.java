@@ -4,17 +4,18 @@ public class Room {
 
     // Atributos
 
+    protected Hotel hotel;
     protected int floor;
+    protected int id;
     protected String type;
     protected String State;
-    protected bedConfiguration [] bed; 
+    protected int [] bedConfigurationRoom; 
     protected boolean lookSea;
-    protected int id;
     protected int ability;
-    protected boolean tv;
+    protected boolean tvPremiun;
     
     // Constructor
-    public Room(int floorRoom, int idRoom, String typeRoom){
+    public Room(String hotel, int idRoom, String typeRoom){
 
     }
 
@@ -44,11 +45,11 @@ public class Room {
         State = state;
     }
 
-    public bedConfiguration[] getBed() {
+    public int [] getBed() {
         return bed;
     }
 
-    public void setBed(bedConfiguration[] bed) {
+    public void setBed(int [] bed) {
         this.bed = bed;
     }
 
@@ -76,12 +77,20 @@ public class Room {
         this.ability = ability;
     }
 
-    public double getTv() {
-        return tv;
+    public double getTvPremiun() {
+        return tvPremiun;
     }
 
     public void setTv(double tv) {
-        this.tv = tv;
+        this.tvPremiun = tv;
+    }
+
+    public String getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(String hotel) {
+        this.hotel = hotel;
     }
     
 }
