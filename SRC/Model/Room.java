@@ -1,6 +1,6 @@
 package HotelManager.SRC.Model;
 
-public class Room {
+public abstract class Room {
 
     // Atributos
 
@@ -12,85 +12,73 @@ public class Room {
     protected int [] bedConfigurationRoom; 
     protected boolean lookSea;
     protected int ability;
-    protected boolean tvPremiun;
+    protected boolean tvPremiun = false;
     
     // Constructor
-    public Room(String hotel, int idRoom, String typeRoom){
-
+    public Room( Hotel hotel, int id, boolean sealook){
+        this.hotel = hotel;
+        setId(id);
+        setSeaLook(sealook);
     }
 
-    // Metodos
+    public abstract void setValidFloor(int floor);
+
+    public void setAbility(int[] bed){
+        int total = 0;
+        total += bed[0];
+        total += bed[1] * 2;
+        this.ability = total;
+    }
+
+    public void setId(int id){
+        if( id > 0 ) {
+            this.id = id;
+        } else {
+            throw new IllegalArgumentException("El id de la habitacion no es valido");
+        }
+    }
+
+    public void  setSeaLook(boolean sealook){
+        this.lookSea = sealook;
+    }
+
+    public void setTVPremiun(boolean TV){
+        if (TV == true ) {
+            this.tvPremiun = TV;
+        }
+    }
 
     public int getFloor() {
         return floor;
-    }
-
-    public void setFloor(int floor) {
-        this.floor = floor;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getState() {
-        return State;
-    }
-
-    public void setState(String state) {
-        State = state;
-    }
-
-    public int [] getBed() {
-        return bed;
-    }
-
-    public void setBed(int [] bed) {
-        this.bed = bed;
-    }
-
-    public int getLookSea() {
-        return lookSea;
-    }
-
-    public void setLookSea(int lookSea) {
-        this.lookSea = lookSea;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getType() {
+        return type;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public int[] getBedConfigurationRoom() {
+        return bedConfigurationRoom;
+    }
+
+    public boolean isLookSea() {
+        return lookSea;
     }
 
     public int getAbility() {
         return ability;
     }
 
-    public void setAbility(int ability) {
-        this.ability = ability;
-    }
-
-    public double getTvPremiun() {
+    public boolean isTvPremiun() {
         return tvPremiun;
     }
 
-    public void setTv(double tv) {
-        this.tvPremiun = tv;
-    }
 
-    public String getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(String hotel) {
-        this.hotel = hotel;
-    }
-    
 }

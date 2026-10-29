@@ -9,55 +9,29 @@ public class Suite extends Room {
 
     // Constructor 
 
-    public  Suite(String hotel, int id, String type, String state, int floor, int [] bed, boolean lookSea){
-        super(hotel, id, type);
-        setFloor(floor);
-        setBedConfiguration(bed);
-        setLookSea(lookSea);
-        setAbility(bed);
-        this.minibar = true;
+    public  Suite(Hotel hotel, int id, boolean lookSea, int floor){
+        super(hotel, id, lookSea);
+        setValidFloor(floor);
+        this.type = "Suite";
+        this.State = "Habilitada";
+        this.bedConfigurationRoom = new int [] {0, 1};
+        setAbility(bedConfigurationRoom);
         this.tvPremiun = true;
-
+        this.minibar = true;
     }
 
-    // Metodos 
-
-    public void setFloor( int floor){
-        if (floor == getFloor() || floor == (getFloor() - 1)){
+    
+    @Override 
+    
+    public void setValidFloor(int floor){
+        if ( floor >= (hotel.getTotalfloor() - 1 ) || floor < = hotel.getTotalfloor()){
             this.floor = floor;
-        } else{
-            throw new IllegalAccessException("El piso de la suite es invalido");
+        } else {
+            throw new IllegalArgumentException("Para esta habitacion, el piso no coincide");
         }
     }
     
-    public void setBedConfiguration(int [] bed){
-        if(comprobation(bed[0])){
-            if(coprobation(bed[1])){
-                this.bedConfigurationRoom = bed;
-            }
-        }
-    }
-    
-    public void setLookSea(boolean look){
-        this.lookSea = look;
-    }
-
-    public void setAbility(int [] bed ){
-        int ability = 0;
-        ability = bed[1] * 2;
-        ability += bed[0];
-        this.ability = ability;
-    }
-
-    public static comprobation(int number){
-        if (number < 0){
-            throw new IllegalAccessException("No se puedo añadir un valor negativo");
-        }
-        return true;
-    }
-
     public boolean isMinibar() {
         return minibar;
     }
-    
 }
